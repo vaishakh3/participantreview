@@ -34,7 +34,14 @@ Copy [.env.example](/Users/user/Desktop/code/hobby/codexhackathon/.env.example) 
 ```bash
 SUPABASE_URL=...
 SUPABASE_SERVICE_ROLE_KEY=...
+NEXT_PUBLIC_SUPABASE_URL=...
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=...
 ```
+
+Important:
+
+- the server needs `SUPABASE_SERVICE_ROLE_KEY` for syncing applicants and saving reviews
+- the publishable key alone is not enough for this backend
 
 ### 3. Set your reviewer names
 
