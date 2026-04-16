@@ -3,7 +3,7 @@ const { loadEnv } = require("../lib/env");
 
 loadEnv(path.join(__dirname, ".."));
 
-const { CSV_PATH } = require("../server");
+const { CSV_PATH } = require("../lib/local-data");
 const { syncApplicantsFromCurrentCsv } = require("../lib/sync-applicants");
 
 async function main() {
