@@ -1,4 +1,4 @@
-const { createServer } = require("./app");
+const { createServer } = require("./lib/http-app");
 const { supabaseConfigured } = require("./lib/supabase");
 const { CSV_PATH } = require("./lib/local-data");
 
