@@ -1,0 +1,86 @@
+:root {
+  color-scheme: dark;
+  --bg: #050505;
+  --panel: #111111;
+  --text: #f5f5f5;
+  --muted: #9a9a9a;
+  --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.22);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 18%), var(--bg);
+  color: var(--text);
+  font-family: "Avenir Next", "Helvetica Neue", "Segoe UI", sans-serif;
+}
+.admin-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+.admin-card {
+  width: min(680px, 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.022), rgba(255,255,255,0.012));
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: 28px;
+}
+.eyebrow {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.74rem;
+  margin: 0 0 12px;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  letter-spacing: -0.04em;
+}
+.copy {
+  margin: 16px 0 0;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 60ch;
+}
+.upload-form {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+.upload-field {
+  display: grid;
+  gap: 8px;
+}
+.upload-field span { color: var(--muted); }
+input[type="file"] {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(255,255,255,0.03);
+  color: var(--text);
+}
+button {
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 14px 18px;
+  background: transparent;
+  color: var(--text);
+  justify-self: start;
+}
+.status-box {
+  margin-top: 22px;
+  border-top: 1px solid var(--line);
+  padding-top: 18px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+.status-box strong { color: var(--text); }
+.back-link {
+  display: inline-block;
+  margin-top: 22px;
+  color: var(--text);
+}

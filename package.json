@@ -1,0 +1,10 @@
+{
+  "name": "codex-hackathon-review-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Minimal CSV-driven reviewer dashboard for the Codex Community Hackathon.",
+  "scripts": {
+    "start": "node server.js",
+    "sync:supabase": "node scripts/sync-to-supabase.js"
+  }
+}

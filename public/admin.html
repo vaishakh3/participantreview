@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review Admin</title>
+    <link rel="stylesheet" href="/admin.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <div class="admin-card">
+        <p class="eyebrow">Admin</p>
+        <h1>Upload Updated CSV</h1>
+        <p class="copy">
+          Replace the current applicant CSV. Existing applicants keep their reviewer assignment and review state. Only new applicants get added and balanced across reviewers.
+        </p>
+
+        <form id="uploadForm" class="upload-form">
+          <label class="upload-field">
+            <span>CSV file</span>
+            <input id="csvInput" name="csv" type="file" accept=".csv,text/csv" required />
+          </label>
+          <button id="submitButton" type="submit">Upload and Sync</button>
+        </form>
+
+        <div id="status" class="status-box" aria-live="polite">
+          <p>No upload yet.</p>
+        </div>
+
+        <a class="back-link" href="/">Back to reviewer desk</a>
+      </div>
+    </main>
+
+    <script src="/admin.js"></script>
+  </body>
+</html>

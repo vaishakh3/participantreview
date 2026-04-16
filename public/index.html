@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Codex Hackathon Reviews</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand-lockup">
+          <p class="eyebrow">Codex Community Hackathon</p>
+          <div class="brand-row">
+            <h1>Reviewer Desk</h1>
+            <p id="modeBadge" class="mode-badge">Loading mode…</p>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <label class="field reviewer-field">
+            <span>Reviewer</span>
+            <div class="select-wrap">
+              <select id="reviewerSelect"></select>
+            </div>
+          </label>
+        </div>
+      </header>
+
+      <div class="content-grid">
+        <aside class="queue-column">
+          <div class="queue-shell">
+            <div class="queue-section-label">
+              <span class="eyebrow">Queue</span>
+            </div>
+          <div class="filter-row" role="tablist" aria-label="Decision filters">
+            <button class="filter-button is-active" data-filter="all">All</button>
+            <button class="filter-button" data-filter="pending">Pending</button>
+            <button class="filter-button" data-filter="approved">Approved</button>
+            <button class="filter-button" data-filter="rejected">Rejected</button>
+          </div>
+
+            <div class="queue-panel">
+              <div class="queue-header">
+                <span>Assigned queue</span>
+                <span id="queueMeta" class="muted"></span>
+              </div>
+              <div id="submissionList" class="submission-list"></div>
+            </div>
+          </div>
+        </aside>
+
+        <main class="workspace">
+          <div class="workspace-shell">
+            <header class="workspace-utility">
+              <div class="workspace-utility-label">
+                <span class="eyebrow">Review status</span>
+              </div>
+              <div class="stat-strip">
+                <div class="stat-item">
+                  <span class="stat-label">Assigned</span>
+                  <strong id="statTotal">0</strong>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Pending</span>
+                  <strong id="statPending">0</strong>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Approved</span>
+                  <strong id="statApproved">0</strong>
+                </div>
+                <div class="stat-item">
+                  <span class="stat-label">Rejected</span>
+                  <strong id="statRejected">0</strong>
+                </div>
+              </div>
+              <div class="decision-actions">
+                <button id="resetButton" class="ghost-button">Clear</button>
+                <button id="rejectButton" class="danger-button">Reject</button>
+                <button id="approveButton" class="success-button">Approve</button>
+              </div>
+            </header>
+
+            <header class="workspace-header">
+              <div>
+                <p class="eyebrow">Current applicant</p>
+                <h2 id="applicantName">No applicant selected</h2>
+              </div>
+            </header>
+
+            <section id="emptyState" class="empty-state">
+              <p>No applicants match this filter for the selected reviewer.</p>
+            </section>
+
+            <section id="detailView" class="detail-view is-hidden">
+              <div class="detail-topline">
+                <span id="decisionBadge" class="decision-badge">Pending</span>
+                <span id="indexBadge" class="muted"></span>
+              </div>
+
+              <div class="meta-grid">
+                <div>
+                  <span class="meta-label">Email</span>
+                  <p id="applicantEmail">-</p>
+                </div>
+                <div>
+                  <span class="meta-label">Type</span>
+                  <p id="applicantType">-</p>
+                </div>
+                <div>
+                  <span class="meta-label">Company / Institute</span>
+                  <p id="applicantOrg">-</p>
+                </div>
+                <div>
+                  <span class="meta-label">Submitted</span>
+                  <p id="applicantCreatedAt">-</p>
+                </div>
+                <div>
+                  <span class="meta-label">Portfolio / GitHub</span>
+                  <p id="applicantPortfolio">-</p>
+                </div>
+                <div>
+                  <span class="meta-label">ChatGPT Email</span>
+                  <p id="applicantChatgptEmail">-</p>
+                </div>
+              </div>
+
+              <section class="answer-panel">
+                <div class="panel-header">
+                  <span>Why should we select you?</span>
+                </div>
+                <article id="applicantWhy" class="answer-copy"></article>
+              </section>
+            </section>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
