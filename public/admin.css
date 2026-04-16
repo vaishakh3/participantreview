@@ -56,12 +56,15 @@ h1 {
   gap: 8px;
 }
 .upload-field span { color: var(--muted); }
+input[type="text"],
+input[type="password"],
 input[type="file"] {
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 16px;
   background: rgba(255,255,255,0.03);
   color: var(--text);
+  width: 100%;
 }
 button {
   border: 1px solid var(--line-strong);
@@ -79,6 +82,13 @@ button {
   line-height: 1.7;
 }
 .status-box strong { color: var(--text); }
+.status-error {
+  margin: 0;
+  color: #ffc2bb;
+}
+.is-hidden {
+  display: none;
+}
 .back-link {
   display: inline-block;
   margin-top: 22px;

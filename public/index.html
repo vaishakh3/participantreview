@@ -7,6 +7,49 @@
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
+    <div id="reviewerModal" class="reviewer-modal is-open" role="dialog" aria-modal="true" aria-labelledby="reviewerModalTitle">
+      <div class="reviewer-modal__backdrop"></div>
+      <div class="reviewer-modal__panel">
+        <p class="eyebrow">Reviewer access</p>
+        <h2 id="reviewerModalTitle">Select your reviewer name</h2>
+        <p class="reviewer-modal__copy">This will be remembered on this device for future sessions.</p>
+        <div class="reviewer-modal__field">
+          <div class="select-wrap">
+            <select id="reviewerModalSelect">
+              <option value="">Choose reviewer</option>
+            </select>
+          </div>
+        </div>
+        <div class="reviewer-modal__actions">
+          <button id="reviewerModalConfirm" class="success-button" type="button">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="adminLoginModal" class="admin-login-modal" role="dialog" aria-modal="true" aria-labelledby="adminLoginTitle">
+      <div class="admin-login-modal__backdrop"></div>
+      <div class="admin-login-modal__panel">
+        <p class="eyebrow">Admin</p>
+        <h2 id="adminLoginTitle">Sign in to upload a CSV</h2>
+        <p class="reviewer-modal__copy">Only admins can open the upload desk.</p>
+        <form id="adminLoginForm" class="admin-login-form">
+          <label class="admin-login-field">
+            <span>Username</span>
+            <input id="adminUsername" name="username" type="text" autocomplete="username" required />
+          </label>
+          <label class="admin-login-field">
+            <span>Password</span>
+            <input id="adminPassword" name="password" type="password" autocomplete="current-password" required />
+          </label>
+          <p id="adminLoginError" class="admin-login-error is-hidden">Invalid username or password.</p>
+          <div class="admin-login-actions">
+            <button id="adminCancelButton" class="ghost-button" type="button">Cancel</button>
+            <button class="success-button" type="submit">Continue</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <div class="app-shell">
       <header class="topbar">
         <div class="brand-lockup">
@@ -135,6 +178,10 @@
           </div>
         </main>
       </div>
+
+      <footer class="app-footer">
+        <button id="adminEntryButton" class="admin-entry-button" type="button">Admin</button>
+      </footer>
     </div>
 
     <script src="/app.js"></script>

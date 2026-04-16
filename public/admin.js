@@ -1,3 +1,10 @@
+const adminLoginCard = document.getElementById("adminLoginCard");
+const uploadCard = document.getElementById("uploadCard");
+const adminAuthForm = document.getElementById("adminAuthForm");
+const adminAuthUsername = document.getElementById("adminAuthUsername");
+const adminAuthPassword = document.getElementById("adminAuthPassword");
+const adminAuthError = document.getElementById("adminAuthError");
+const adminAuthSubmit = document.getElementById("adminAuthSubmit");
 const uploadForm = document.getElementById("uploadForm");
 const csvInput = document.getElementById("csvInput");
 const submitButton = document.getElementById("submitButton");
@@ -6,6 +13,57 @@ const statusBox = document.getElementById("status");
 function setStatus(html) {
   statusBox.innerHTML = html;
 }
+
+function showUploadCard() {
+  adminLoginCard.classList.add("is-hidden");
+  uploadCard.classList.remove("is-hidden");
+}
+
+function showLoginCard() {
+  uploadCard.classList.add("is-hidden");
+  adminLoginCard.classList.remove("is-hidden");
+}
+
+async function checkSession() {
+  const response = await fetch("/api/admin/session");
+  const payload = await response.json();
+  if (payload.authenticated) {
+    showUploadCard();
+  } else {
+    showLoginCard();
+  }
+}
+
+adminAuthForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  adminAuthError.classList.add("is-hidden");
+  adminAuthSubmit.disabled = true;
+  adminAuthSubmit.textContent = "Signing in…";
+
+  try {
+    const response = await fetch("/api/admin/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: adminAuthUsername.value,
+        password: adminAuthPassword.value
+      })
+    });
+
+    if (!response.ok) {
+      adminAuthError.classList.remove("is-hidden");
+      adminAuthPassword.select();
+      return;
+    }
+
+    showUploadCard();
+  } finally {
+    adminAuthSubmit.disabled = false;
+    adminAuthSubmit.textContent = "Continue";
+  }
+});
 
 uploadForm.addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -47,3 +105,5 @@ uploadForm.addEventListener("submit", async (event) => {
     submitButton.textContent = "Upload and Sync";
   }
 });
+
+checkSession();

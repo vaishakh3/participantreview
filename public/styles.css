@@ -34,6 +34,10 @@ body {
   font-family: "Avenir Next", "Helvetica Neue", "Segoe UI", sans-serif;
 }
 
+body.has-modal-open {
+  overflow: hidden;
+}
+
 button,
 select {
   font: inherit;
@@ -44,9 +48,70 @@ a {
   text-decoration-color: rgba(255, 255, 255, 0.38);
 }
 
+.reviewer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.reviewer-modal.is-open {
+  display: flex;
+}
+
+.reviewer-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.reviewer-modal__panel {
+  position: relative;
+  width: min(460px, 100%);
+  padding: 28px 28px 26px;
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.98), rgba(10, 10, 10, 0.96));
+  box-shadow:
+    0 20px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.reviewer-modal__panel h2 {
+  margin: 10px 0 0;
+  font-size: clamp(2rem, 5vw, 2.7rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  font-weight: 550;
+  max-width: 10ch;
+}
+
+.reviewer-modal__copy {
+  margin: 14px 0 0;
+  color: var(--muted-strong);
+  line-height: 1.6;
+  max-width: 34ch;
+}
+
+.reviewer-modal__field {
+  margin-top: 24px;
+}
+
+.reviewer-modal__actions {
+  margin-top: 18px;
+  display: flex;
+  justify-content: flex-end;
+}
+
 .app-shell {
   min-height: 100vh;
   padding: 0 28px 28px;
+  display: flex;
+  flex-direction: column;
 }
 
 .topbar {
@@ -155,6 +220,86 @@ select {
   grid-template-columns: 360px minmax(0, 1fr);
   gap: 20px;
   align-items: stretch;
+  flex: 1;
+}
+
+.admin-login-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1001;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.admin-login-modal.is-open {
+  display: flex;
+}
+
+.admin-login-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+}
+
+.admin-login-modal__panel {
+  position: relative;
+  width: min(420px, 100%);
+  padding: 28px;
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(20, 20, 20, 0.98), rgba(10, 10, 10, 0.96));
+  box-shadow:
+    0 20px 80px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.admin-login-modal__panel h2 {
+  margin: 10px 0 0;
+  font-size: clamp(2rem, 5vw, 2.4rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  font-weight: 550;
+  max-width: 11ch;
+}
+
+.admin-login-form {
+  margin-top: 24px;
+  display: grid;
+  gap: 14px;
+}
+
+.admin-login-field {
+  display: grid;
+  gap: 8px;
+}
+
+.admin-login-field span {
+  color: var(--muted);
+}
+
+.admin-login-field input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  outline: none;
+}
+
+.admin-login-error {
+  margin: 0;
+  color: #ffc2bb;
+}
+
+.admin-login-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 4px;
 }
 
 .queue-column {
@@ -326,6 +471,26 @@ select {
 
 .workspace {
   min-width: 0;
+}
+
+.app-footer {
+  display: flex;
+  justify-content: center;
+  padding: 18px 0 4px;
+}
+
+.admin-entry-button {
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.34);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 160ms ease;
+}
+
+.admin-entry-button:hover {
+  color: rgba(255, 255, 255, 0.62);
 }
 
 .workspace-utility {
