@@ -765,6 +765,7 @@ select, .admin-login-field input { border-radius: 6px; min-height: 44px; padding
   .filter-button { flex: 1; font-size: .75rem; padding-inline: 2px; }
   .queue-column .queue-panel { display: none; }
   .workspace { scroll-margin-top: 48px; }
+  .request-status:not(:empty) { position: sticky; top: 44px; z-index: 21; background: #111; padding: 12px; border-bottom: 1px solid var(--line); }
   .workspace-shell { overflow: visible; }
   .workspace-utility { padding: 14px 0; display: block; }
   .stat-item { padding: 0 6px; }

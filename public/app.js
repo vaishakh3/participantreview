@@ -113,6 +113,7 @@ function renderControls() {
     );
   });
   reviewerSelect.disabled = busy;
+  reviewerModalSelect.disabled = busy;
   reviewerModalConfirm.disabled = busy;
   queueSearch.disabled = busy;
   queueButton.disabled = busy || !state.selectedReviewer;
