@@ -269,13 +269,18 @@ function render() {
 }
 
 async function loadReviewer(reviewerName) {
-  const requireExplicitSelection = !reviewerName && !getStoredReviewer();
+  let requireExplicitSelection = !reviewerName && !getStoredReviewer();
   const metaResponse = await fetch("/api/meta");
   const meta = await metaResponse.json();
   modeBadge.textContent = meta.mode === "supabase" ? "Shared cloud mode" : "Local file mode";
 
   const response = await fetch(`/api/bootstrap?reviewer=${encodeURIComponent(reviewerName)}`);
   const payload = await response.json();
+
+  if (reviewerName && !payload.reviewers.includes(reviewerName)) {
+    requireExplicitSelection = true;
+    storeReviewer("");
+  }
 
   state.reviewers = payload.reviewers;
   state.selectedReviewer = requireExplicitSelection ? "" : payload.selectedReviewer;

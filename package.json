@@ -4,6 +4,7 @@
   "private": true,
   "description": "Minimal CSV-driven reviewer dashboard for the Codex Community Hackathon.",
   "scripts": {
+    "test": "node --test",
     "start": "node dev-server.js",
     "sync:supabase": "node scripts/sync-to-supabase.js"
   }

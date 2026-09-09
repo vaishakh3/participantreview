@@ -2,6 +2,24 @@
 
 Minimal reviewer dashboard for triaging CSV submissions across multiple devices and networks.
 
+## Calicut Event
+
+The Calicut reviewer roster is Vaishakh Suresh, Viswanatha Kartha V, Joji Panackal, and Advaith Narayanan. The initial 190 registrations are distributed 48/48/47/47 in that order, with all decisions pending.
+
+The new Supabase project reference is `wfvjflocrmuvfqewluoe`. Its API URL is `https://wfvjflocrmuvfqewluoe.supabase.co`. Configure the hosting environment with this URL and the matching server-side secret key before deploying this event. Do not reuse a key from the previous project.
+
+Registration exports contain personal data. Import them directly without committing them to this public repository:
+
+```bash
+CSV_PATH="/absolute/path/to/calicut-registrations.csv" npm run sync:supabase
+```
+
+The checked-in `data/applicants.csv` is historical, not the Calicut event. Do not sync it to the new database. The server must use Supabase mode in production. Keep previous event databases unchanged.
+
+`supabase/schema.sql` enables RLS and grants access only to the server's service role. No browser RLS policies are needed for this backend-only access model. This does not add reviewer authentication: the existing reviewer dropdown remains an identity selector, not a secure login.
+
+Run the import regression tests with `npm test`.
+
 ## Architecture
 
 This app now supports two modes:
@@ -17,7 +35,7 @@ The same UI works in both modes. Once `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_
 - Evenly assigns them across the reviewers listed in `config/reviewers.json`
 - Lets each reviewer approve or reject applicants from a minimal web UI
 - Saves review decisions centrally in Supabase
-- Preserves decisions when you replace the CSV later, as long as `api_id` stays stable
+- Preserves decisions when you replace the CSV later, as long as the Luma ID stays stable (`api_id` for legacy exports, `guest_id` for current exports)
 
 ## Quick Start
 
@@ -103,7 +121,7 @@ or
 1. Open `/admin.html`
 2. Upload the new CSV from the browser
 
-Because the app uses `api_id` as the applicant primary key:
+Because the app uses the stable Luma ID as the applicant primary key:
 
 - existing applicants keep their current reviewer assignment
 - existing review decisions stay attached to the same applicants

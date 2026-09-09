@@ -29,3 +29,10 @@ create table if not exists reviews (
 
 create index if not exists applicants_assigned_reviewer_idx on applicants (assigned_reviewer_id, created_at);
 create index if not exists reviews_reviewer_idx on reviews (reviewer_id, updated_at desc);
+
+-- The backend is the only database client; browsers must not access these rows directly.
+alter table public.reviewers enable row level security;
+alter table public.applicants enable row level security;
+alter table public.reviews enable row level security;
+revoke all on public.reviewers, public.applicants, public.reviews from anon, authenticated;
+grant select, insert, update, delete on public.reviewers, public.applicants, public.reviews to service_role;
