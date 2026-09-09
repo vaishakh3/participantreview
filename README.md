@@ -4,7 +4,7 @@ Minimal reviewer dashboard for triaging CSV submissions across multiple devices 
 
 ## Calicut Event
 
-The Calicut reviewer roster is Vaishakh Suresh, Viswanatha Kartha V, Joji Panackal, and Advaith Narayanan. The initial 190 registrations are distributed 48/48/47/47 in that order, with all decisions pending.
+The Calicut reviewer roster is Vaishakh Suresh, Viswanatha Kartha V, Joji Panackal, and Robin Francis. The initial 190 registrations are distributed 48/48/47/47 in that order, with all decisions pending.
 
 The new Supabase project reference is `wfvjflocrmuvfqewluoe`. Its API URL is `https://wfvjflocrmuvfqewluoe.supabase.co`. Configure the hosting environment with this URL and the matching server-side secret key before deploying this event. Do not reuse a key from the previous project.
 

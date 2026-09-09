@@ -4,7 +4,7 @@ const { parseApplicantsCsvText } = require("../lib/local-data");
 const { assignOnlyNewApplicants } = require("../lib/sync-applicants");
 const { reviewerSlug } = require("../lib/supabase");
 
-const reviewers = ["Vaishakh Suresh", "Viswanatha Kartha V", "Joji Panackal", "Advaith Narayanan"];
+const reviewers = ["Vaishakh Suresh", "Viswanatha Kartha V", "Joji Panackal", "Robin Francis"];
 
 test("current Luma exports use guest_id as the stable submission ID", () => {
   const [row] = parseApplicantsCsvText("\uFEFFguest_id,name,email\r\ngst-123,Test,test@example.com\r\n");
