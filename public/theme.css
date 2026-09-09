@@ -1,0 +1,84 @@
+:root {
+  color-scheme: dark;
+  --bg: #050505;
+  --bg-soft: #0c0c0c;
+  --panel: #111111;
+  --panel-strong: #191919;
+  --text: #f5f5f5;
+  --muted: #a0a0a0;
+  --muted-strong: #c2c2c2;
+  --line: #777777;
+  --line-soft: #303030;
+  --line-strong: #a0a0a0;
+  --hover: #202020;
+  --selected: #282828;
+  --danger: #ffb4a9;
+  --danger-border: #c47c73;
+  --danger-bg: #3b2220;
+  --success: #94e3b7;
+  --success-border: #609c79;
+  --success-bg: #173b28;
+  --warning: #efcd80;
+  --warning-border: #ac8c52;
+  --warning-bg: #30291b;
+  --focus: #a7c7ff;
+  --backdrop: rgba(0, 0, 0, .72);
+  --shadow: 0 0 0 1px var(--line-soft);
+  --icon-filter: invert(1);
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --bg-soft: #f8f9fa;
+  --panel: #f4f5f6;
+  --panel-strong: #ffffff;
+  --text: #17191c;
+  --muted: #5b6068;
+  --muted-strong: #41464e;
+  --line: #7a8088;
+  --line-soft: #dce0e4;
+  --line-strong: #585f69;
+  --hover: #eceff2;
+  --selected: #e3e8ee;
+  --danger: #a52923;
+  --danger-border: #b74940;
+  --danger-bg: #fce9e6;
+  --success: #17643c;
+  --success-border: #398259;
+  --success-bg: #e2f3e8;
+  --warning: #74500c;
+  --warning-border: #937024;
+  --warning-bg: #fcf0ce;
+  --focus: #2156b0;
+  --backdrop: rgba(15, 20, 28, .4);
+  --icon-filter: none;
+}
+
+input::placeholder { color: var(--muted); opacity: 1; }
+input, select { accent-color: var(--text); }
+option { color: var(--text); background: var(--panel); }
+button:focus-visible, input:focus-visible, select:focus-visible, a:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex: 0 0 44px;
+  padding: 11px;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.theme-toggle:hover { background: var(--hover); border-color: var(--line); }
+.theme-toggle img { width: 20px; height: 20px; filter: var(--icon-filter); }
+.theme-toggle .theme-moon { display: none; }
+[data-theme="light"] .theme-toggle .theme-sun { display: none; }
+[data-theme="light"] .theme-toggle .theme-moon { display: block; }

@@ -1,17 +1,7 @@
-:root {
-  color-scheme: dark;
-  --bg: #050505;
-  --panel: #111111;
-  --text: #f5f5f5;
-  --muted: #9a9a9a;
-  --line: rgba(255, 255, 255, 0.12);
-  --line-strong: rgba(255, 255, 255, 0.22);
-}
-
 * { box-sizing: border-box; }
 html, body { margin: 0; min-height: 100%; }
 body {
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent 18%), var(--bg);
+  background: var(--bg);
   color: var(--text);
   font-family: "Avenir Next", "Helvetica Neue", "Segoe UI", sans-serif;
 }
@@ -23,22 +13,22 @@ body {
 }
 .admin-card {
   width: min(680px, 100%);
-  background: linear-gradient(180deg, rgba(255,255,255,0.022), rgba(255,255,255,0.012));
+  background: var(--panel);
   border: 1px solid var(--line);
-  border-radius: 28px;
+  border-radius: 8px;
   padding: 28px;
 }
 .eyebrow {
   color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
   font-size: 0.74rem;
   margin: 0 0 12px;
 }
 h1 {
   margin: 0;
-  font-size: clamp(2.2rem, 5vw, 3.4rem);
-  letter-spacing: -0.04em;
+  font-size: 2rem;
+  letter-spacing: 0;
 }
 .copy {
   margin: 16px 0 0;
@@ -60,15 +50,15 @@ input[type="text"],
 input[type="password"],
 input[type="file"] {
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: 6px;
   padding: 16px;
-  background: rgba(255,255,255,0.03);
+  background: var(--panel);
   color: var(--text);
   width: 100%;
 }
 button {
   border: 1px solid var(--line-strong);
-  border-radius: 999px;
+  border-radius: 6px;
   padding: 14px 18px;
   background: transparent;
   color: var(--text);
@@ -84,7 +74,7 @@ button {
 .status-box strong { color: var(--text); }
 .status-error {
   margin: 0;
-  color: #ffc2bb;
+  color: var(--danger);
 }
 .is-hidden {
   display: none;
@@ -93,4 +83,16 @@ button {
   display: inline-block;
   margin-top: 22px;
   color: var(--text);
+}
+
+.admin-theme-toolbar { display: flex; justify-content: flex-end; padding: 12px 24px 0; }
+.admin-shell { min-height: calc(100dvh - 56px); }
+input, button { font: inherit; min-height: 44px; }
+button { cursor: pointer; }
+button:hover { background: var(--hover); }
+.admin-card, .upload-field { min-width: 0; overflow-wrap: anywhere; }
+@media (max-width: 480px) {
+  .admin-shell { padding: 16px; }
+  .admin-card { padding: 20px; }
+  h1 { font-size: 1.75rem; }
 }
