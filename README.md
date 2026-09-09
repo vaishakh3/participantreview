@@ -20,6 +20,18 @@ The checked-in `data/applicants.csv` is historical, not the Calicut event. Do no
 
 Run the import regression tests with `npm test`.
 
+## Review Workflow
+
+- Phones and tablets up to 900px show the current applicant with compact status totals and a fixed bottom action bar. The searchable Queue drawer opens on demand; Previous and Next navigate without opening it.
+- Waitlist is a saved decision, separate from Pending, Approved, and Rejected. Use its filter to return to deferred participants. Approve, Reject, or Clear can change that decision later.
+- Portfolio, institute, and the selection answer are shown before expandable contact details. Desktop keeps a bounded, independently scrolling queue alongside the applicant.
+- Save failures leave the displayed decision unchanged. Controls are disabled while a save is in progress to prevent accidental duplicate actions.
+- Test coverage includes CSV imports, decision persistence and counts, UI filtering, queue navigation, failed requests, and duplicate-save prevention. UI tests use synthetic data; local API tests use temporary files.
+
+The `allow_waitlisted_review_decisions` migration is applied to the Calicut Supabase project. Other existing databases need their `reviews_decision_check` constraint updated to allow `waitlisted` before using this app version. Fresh projects can use `supabase/schema.sql`.
+
+The bundled navigation icons in `public/icons/` are from Lucide Static 1.43.0; its license is included in that directory.
+
 ## Architecture
 
 This app now supports two modes:

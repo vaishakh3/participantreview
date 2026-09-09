@@ -23,7 +23,7 @@ create table if not exists applicants (
 create table if not exists reviews (
   applicant_id text primary key references applicants(id) on delete cascade,
   reviewer_id text not null references reviewers(id) on update cascade on delete cascade,
-  decision text not null check (decision in ('approved', 'rejected')),
+  decision text not null check (decision in ('approved', 'rejected', 'waitlisted')),
   updated_at timestamptz not null default timezone('utc', now())
 );
 
